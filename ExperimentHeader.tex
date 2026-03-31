@@ -1,0 +1,147 @@
+% ECNUExperimentHeader.tex
+
+% Add following documentclass setting to main TeX file:
+% \documentclass[a3paper, twocolumn]{article}
+
+\usepackage[UTF8,zihao=-4]{ctex}
+
+\usepackage{pgfkeys}
+\usepackage{multicol}
+\usepackage{titlesec}
+\usepackage{geometry}
+\usepackage{fontenc}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\geometry{
+    a3paper,          
+    landscape,        
+    left=3cm,
+    right=3cm,
+    top=3.2cm,
+    bottom=3.2cm
+  }
+\setlist{nosep}
+
+% Frequent-used packages
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{booktabs}
+
+
+% Default config for packages listed above
+\graphicspath{{figures/}{process/}}
+
+
+\pgfkeys{
+  /formatoptions/.is family,
+  /formatoptions/.cd,
+  % My font set for Linux
+  titlefontcn/.store in = \formatopttitlefontcn,
+  titlefontcn = Source Han Serif CN,
+  textfontcn/.store in = \formatopttextfontcn,
+  textfontcn = Source Han Sans CN,
+  textmonofontcn/.store in = \formatopttextmonofontcn,
+  textmonofontcn = Source Han Sans CN,
+  textfont/.store in = \formatopttextfont,
+  textfont = Source Serif 4,
+  textmonofont/.store in = \formatopttextmonofont,
+  textmonofont = Source Code Pro,
+}
+
+\pgfkeys{
+  /reportinformation/.is family,
+  /reportinformation/.cd,
+  title/.store in = \reporttitle,
+  title = 缺少标题,
+  yourname/.store in = \yourname,
+  yourname = 佚名,
+  yourid/.store in = \yourid,
+  yourid = NaN,
+  yourgrade/.store in = \yourgrade,
+  yourgrade = {},
+  yourclass/.store in = \yourclass,
+  yourclass = {},
+  dayofweek/.store in = \dayofweek,
+  dayofweek = {},
+  timeofday/.store in =\timeofday,
+  timeofday = 上下晚,
+  yourgroupid/.store in = \yourgroupid,
+  yourgroupid = {},
+  partnername/.store in = \partnername,
+  partnername = {},
+  partnerid/.store in = \partnerid,
+  partnerid = {},
+  reportsubject/.store in = \reportsubject,
+  reportsubject = 华东师范大学实验报告,
+ }
+
+ \setmainfont{\formatopttextfont}
+ \setsansfont{\formatopttextfont}
+ \setmonofont{\formatopttextmonofont}
+  \setCJKmainfont{\formatopttextfontcn}
+  \setCJKsansfont{\formatopttextfontcn}
+  \setCJKmonofont{\formatopttextmonofontcn}
+  \newCJKfontfamily\titlefont{\formatopttitlefontcn}
+\setlength{\columnsep}{2cm}
+\pagestyle{empty}
+
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge \titlefont
+      华东师范大学实验报告}
+  \end{center}
+  \begin{multicols}{2}
+    \noindent
+    {\titlefont 年级} \underline{\makebox[1.5cm][c]{\yourgrade}}
+    {\titlefont 班级} \underline{\makebox[1.5cm][c]{\yourclass}}
+    {\titlefont 组号} \underline{\makebox[1.5cm][c]{\yourgroupid}}\\
+    {\titlefont 姓名} \underline{\makebox[5cm][c]{\yourname}}\\
+    {\titlefont 学号} \underline{\makebox[5cm][c]{\yourid}}\\
+    {\titlefont 星期} \underline{\makebox[1.5cm][c]{\dayofweek}}
+    {\titlefont \timeofday} \quad
+    {\titlefont 成绩} \underline{\makebox[1.5cm][c]{}}\\
+    {\titlefont 同组者} \underline{\makebox[5cm][c]{\partnername}}\\
+    {\titlefont 学\hspace{1em}号} \underline{\makebox[5cm][c]{\partnerid}}
+  \end{multicols}
+  \rule{\columnwidth}{2pt}
+  \noindent
+  \makebox[0.2 \columnwidth][l]{\titlefont \bfseries \large 实验题目:}
+  \makebox[0.6 \columnwidth][c]{\large \reporttitle}
+}
+\titleformat{\section}[hang]{\titlefont \bfseries \large}{}{0ex}{}[]
+\titlespacing*{\section}{0ex}{1.2ex}{0.8ex}
+\titleformat{\subsection}[hang]{\titlefont}{(\chinese{subsection})}{0ex}{}[]
+\titlespacing*{\subsection}{0ex}{0.3ex}{0.5ex}
+
+% Private Config follows from here
+
+% 以下用以配置示例
+% 头文件中填写公共部分
+\pgfkeys{
+  /reportinformation/.cd,
+  yourname = 千反田える,
+  yourid = 20011031,
+  partnername = 折木奉太郎,
+  partnerid = 20120422,
+  yourgrade = 高一,
+  yourclass = 古典部,
+}
+
+% Private Config ends here.
+
+\usepackage{hyperref}
+\hypersetup{
+  pdftitle={\reporttitle},
+  pdfauthor={\yourname},
+  pdfsubject={\reportsubject},
+  hidelinks
+}
+
+% For Emacs AucTeX
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:
