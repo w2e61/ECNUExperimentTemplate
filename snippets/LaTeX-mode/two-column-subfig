@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: two-column-subfig
+# key: subfigs
+# --
+\begin{subfigure}[${1:t}]{${2:${3:0.45} ${4:\columnwidth}}}
+  \centering
+  \includegraphics[width = ${5:0.9} \linewidth]{$6}
+  \caption{$7}
+  ${8:\label\{$9\}}
+\end{subfigure}
+${10:\hfill}
+\begin{subfigure}[${11:t}]{${12:${13:0.45} ${14:\columnwidth}}}
+  \centering
+  \includegraphics[width = ${15:0.9} \linewidth]{$16}
+  \caption{$17}
+  ${18:\label\{$19\}}
+\end{subfigure}

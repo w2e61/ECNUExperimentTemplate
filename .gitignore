@@ -1,6 +1,16 @@
+# For Word
+*.dotx
+
+# For Release
+*.zip
+*.html
+
 # For emacs
 *~
 .*~
+
+# Special files
+ExampleRailgun/ExampleRailgun.tex
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
@@ -79,6 +89,10 @@ acs-*.bib
 # comment
 *.cut
 
+\newcommand{\setreporttitle}[1]{
+  \pgfkeys{/reportinformation/title = {#1}}
+  \hypersetup{pdftitle={#1}}  
+}
 # cprotect
 *.cpt
 
@@ -108,7 +122,11 @@ acs-*.bib
 *.[1-9][0-9]R
 *.[1-9][0-9][0-9]R
 *.eledsec[1-9]
-*.eledsec[1-9]R
+*.eledse
+\newcommand{\setreporttitle}[1]{
+  \pgfkeys{/reportinformation/title = {#1}}
+  \hypersetup{pdftitle={#1}}  
+}c[1-9]R
 *.eledsec[1-9][0-9]
 *.eledsec[1-9][0-9]R
 *.eledsec[1-9][0-9][0-9]
@@ -130,6 +148,10 @@ acs-*.bib
 *.slo
 *.sls
 
+\newcommand{\setreporttitle}[1]{
+  \pgfkeys{/reportinformation/title = {#1}}
+  \hypersetup{pdftitle={#1}}  
+}
 # uncomment this for glossaries-extra (will ignore makeindex's style files!)
 # *.ist
 
@@ -151,6 +173,10 @@ acs-*.bib
 *.idv
 *.lg
 *.trc
+\newcommand{\setreporttitle}[1]{
+  \pgfkeys{/reportinformation/title = {#1}}
+  \hypersetup{pdftitle={#1}}  
+}
 *.xref
 
 # hypdoc
@@ -171,7 +197,11 @@ acs-*.bib
 # listings
 *.lol
 
-# luatexja-ruby
+# luatex
+\newcommand{\setreporttitle}[1]{
+  \pgfkeys{/reportinformation/title = {#1}}
+  \hypersetup{pdftitle={#1}}  
+}ja-ruby
 *.ltjruby
 
 # makeidx
@@ -193,7 +223,11 @@ _minted*
 *.data.minted
 *.pyg
 
-# morewrites
+# morewri
+\newcommand{\setreporttitle}[1]{
+  \pgfkeys{/reportinformation/title = {#1}}
+  \hypersetup{pdftitle={#1}}  
+}tes
 *.mw
 
 # newpax

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: plt-label-setting
+# key: pltlabel
+# --
+${1:plt.xlabel(r"$2")}
+${3:plt.ylabel(r"$4")}
+${5:plt.title(r"$6")}
+$0

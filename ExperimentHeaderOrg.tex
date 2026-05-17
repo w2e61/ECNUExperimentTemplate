@@ -1,15 +1,11 @@
-% ECNUExperimentHeader.tex
+% ECNUExperimentHeaderOrg.tex
 
 % Add following documentclass setting to main TeX file:
-% \documentclass[a3paper, twocolumn]{article}
-
-\usepackage[UTF8,zihao=-4]{ctex}
 
 \usepackage{pgfkeys}
 \usepackage{multicol}
 \usepackage{titlesec}
 \usepackage{geometry}
-\usepackage{fontenc}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \geometry{
@@ -23,10 +19,8 @@
 \setlist{nosep}
 
 % Frequent-used packages
-\usepackage{float}
-\usepackage{amsmath}
-\usepackage{graphicx}
 \usepackage{caption}
+\usepackage{subcaption}
 \usepackage{booktabs}
 
 
@@ -121,24 +115,21 @@
   \pgfkeys{/reportinformation/title = {#1}}
   \hypersetup{pdftitle={#1}}  
 }
-
 % Private Config follows from here
-
-% 以下用以配置示例
-% 头文件中填写公共部分
 \pgfkeys{
   /reportinformation/.cd,
-  yourname = 千反田える,
-  yourid = 20011031,
-  partnername = 折木奉太郎,
-  partnerid = 20120422,
-  yourgrade = 高一,
-  yourclass = 古典部,
+  yourname = 御坂美琴,
+  yourid = 10255300502,
+  yourgrade = 二年级,
+  yourclass = 电击,
+  dayofweek = ,
+  timeofday = ,
+  partnername = 白井黑子,
+  partnerid = 10255303177,
+  yourgroupid = ,
 }
-
 % Private Config ends here.
 
-\usepackage{hyperref}
 \hypersetup{
   pdftitle={\reporttitle},
   pdfauthor={\yourname},

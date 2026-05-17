@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: plt-savefig
+# key: pltsave
+# --
+plt.savefig("$1.${2:png}",dpi=${3:400}, bbox_inches="tight")
+${4:plt.show()}$0

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: scipy-linregress
+# key: linregress
+# --
+slope,intercept,r_value,p_value,std_err =\
+    scipy.stats.linregress($1,$2) # 线性拟合
+print(f"拟合函数: y = {slope:.6f} * x + {intercept:.6f}")
+print(f"相关系数 (r) = {r_value:.6f}")
+$0

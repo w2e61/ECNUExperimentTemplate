@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: plt-setting
+# key: pltset
+# --
+# 绘图设置
+sns.set_theme(style="whitegrid")
+plt.rcParams['font.sans-serif'] = ["Source Han Sans CN"]
+plt.rcParams['axes.unicode_minus'] = False
+
+${1:plt.rcParams["text.usetex"] = True}
+${2:plt.rcParams["text.latex.preamble"] = r"${3:\usepackage{$4\}}"}
+$0

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: experiment-report-header
+# key: exprheader
+# --
+#+setupfile: ../orgsetting.org
+#+call: experiment-report-settitleconfigs(reporttitle="$1")
+
+$0

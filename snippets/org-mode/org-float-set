@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: org-float-set
+# key: orgf
+# --
+${1:#+NAME: $2}
+$0
+${3:#+CAPTION: $4}

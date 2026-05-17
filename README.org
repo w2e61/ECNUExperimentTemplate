@@ -1,0 +1,144 @@
+# README.org
+
+#+TITLE: 华东师大实验报告模板
+#+DATE: <2026-05-17 日>
+#+OPTIONS: toc:t num:nil
+
+* 模板目的
+
+老子他妈受够了实验报告的折磨。电子系根本写不完的实验报告使我变得阴暗扭曲。。！
+
+为了更快捷的写实验报告，缩短写实验报告的时间快点去打游戏，我制作调试了这个模板。但即便如此，实验报告在内容上质与量的要求依然像恶鬼一样纠缠着……
+
+希望这份模板能缓解您写实验报告时压抑的心境。
+
+* 适用范围
+
+如果你手边放着厚厚一叠抬头写着“华东师范大学实验报告”楷体字，随之而来的是填写各种各样的个人信息，再下面是密密麻麻没有尽头的横线。那就可以使用这份模板。
+
+其实这模板干的事情不多，充其量而言就这几样：
+- 实现了这个较为复杂的抬头格式
+- 对各级标题的样式进行重新定义，从而提高撰写效率和使报告更加结构化
+- 模仿发的报告纸，使用A3双栏排版
+
+* Word模板
+
+可以在右侧的Release里找到word的dotx模板，直接点进去用就好了。
+
+需要说明以下几点：
+- 为了保证格式字体整体，需要粘贴时请选择“仅粘贴文字”
+- 各级标题可以通过选择菜单栏的样式实现
+- 如果字体行间距异常增大，请尝试关闭各处的“如定义了文档网格，则与之对齐”选项
+- 如果要修改模板，先进入Word之后，选择打开模板。修改后可以保存为新的模板，比如说你可以为某一门课目的个人组员信息单独另存为一个模板。
+- 模板使用Microsoft Word 2024 LTSC制作，可以在学校信息化办公室下载到MS Office官方正版并激活。
+
+如果这门课的实验报告图片很多，而且公式很少，建议适用Word模板。因为一切以效率至上是本项目的宗旨。
+
+如果你是忠实的Word用户，那下面一整节就不用看了。
+
+* 纯文本语言模板
+
+** LaTeX模板
+
+事实上，LaTeX模板的抬头调整的Word更加美观，但是写LaTeX本身是否比Word更折磨就是另外一个问题了。
+
+抛开写LaTeX比较牢的问题不谈，在文件中使用 =\input{}= 命令可以调用此模板，在 ~ExampleHyouka~ 文件夹里提供了一个示例。
+
+需要注意以下几点：
+- ~ExperimentHeader.tex~ 文件是LaTeX模板，代码可以自行研究，大部分内容不再赘述
+  
+- 由于我测试使用Linux系统，故全部使用Adobe系字体。包含以下字体:
+  - Source Han Serif CN
+  - Source Han Sans CN
+  - Source Serif 4
+  - Source Code Pro
+
+  如果你要用Win系统的话，可以在文件里把字体设置全部改掉，改成微软雅黑啥的。或者在系统里安装Adobe免费字体就可以了。
+  
+- 在主文件里设置不会改的部分，必须组员时间等信息
+
+- 在每个文件里设置报告标题，使用 ~\setreporttitle{}~ 命令
+
+- 编译必须使用 =xelatex=
+
+- A3双栏的表格不能使用 =longtable= 环境
+
+- 所有 =hyperref= 的设置都需要在最后进行
+
+- 所有信息使用 =pgfkeys= 储存，操作请自行查文档去
+
+为了提高你写LaTeX的效率，建议你自己根据自己对图片排版的喜好做一点模板，这会让你不那么坐牢。
+
+** Org模板
+
+由于LaTeX在表格等方面实在是过于坐牢，可以考虑使用Org生成LaTeX文件。在 =ExampleRailgun= 里有一个示例。
+
+虽然Org本身学习难度不比Markdown更难，而且org的表格数据处理功能确实是非常好用啊！但是由于Org与Emacs编辑器的强绑定，可能有一些门槛。
+
+可以尝试使用别的编辑器编写Org，比如现在也有Vscode也有Org插件，但这里只介绍使用Emacs编辑器需要的设置。
+
+为了加上org导出LaTeX的默认设置，加入以下配置：
+#+begin_src emacs-lisp
+  ;; Org Setting
+  (setq org-export-allow-bind-keywords t)
+  (setq org-latex-src-block-backend 'minted)
+  (setq org-latex-default-figure-position "H") ;; need float package
+  (setq org-latex-packages-alist '(
+  				 ("UTF8,zihao=-4" "ctex" t)
+  				 ("" "float" nil)
+  				 ("" "minted" t)
+  				 ))
+  (setq org-latex-compiler "xelatex")
+  (defun my/org-export-add-auctex-local-vars (output backend _info)
+    "Add AucTeX local variables to the end of the exported LaTeX file."
+    (when (org-export-derived-backend-p backend 'latex)
+      (concat output
+  	    "\n\n"
+  	    "%%% Local Variables:\n"
+  	    "%%% mode: LaTeX\n"
+  	    "%%% TeX-master: t\n"
+  	    "%%% coding: utf-8\n"
+  	    "%%% TeX-command-extra-options: \"-shell-escape\"\n"
+  	    "%%% End:\n"))
+    )
+  (setq org-export-filter-final-output-functions '(
+  						 my/org-export-add-auctex-local-vars
+  						 ))
+#+end_src
+
+然后，为了在每个文件中间同时插入TITLE元数据和给LaTeX设置标题，有以下两种方法：
+1. 每个Org文件中手动设置，用以下代码
+   #+begin_src
+#+title: 实验标题
+#+latex_header_extra: \setreporttitle{实验标题}
+   #+end_src
+
+2. 设置一个Org-babel，并在Library中挂载，示例如下：
+   #+begin_src emacs-lisp
+              (format "#+title: %s \n#+latex_header_extra: \\setreporttitle{%s}"
+  		  reporttitle reporttitle reporttitle)
+   #+end_src
+   然后在每个Org文件中调用一次。在示例中使用的是名为 =experiment-report-settitleconfigs= 的代码块
+
+顺带一提，如果你真的要入门使用Emacs，LaTeX记得安装插件 ~auctex~ 和 ~cdlatex~ 。
+
+** 自动补全的YASnippest模板
+
+实验报告坐牢的点之一，是同样的事情每周都在做，机械化的重复，模板可以在一定程度上减轻我们的工作量。
+
+在 =snippets= 里提供了一些自用的模板，使用YasNippest插件调用(Vscode也有)。
+
+模板有以下内容:
+- Python科学数据处理
+  - 线性拟合模板
+  - plt绘图设置模板
+- Org图片设置模板
+- LaTeX双栏图片排版模板
+
+* 贡献指南
+
+有问题发Issue...嗯好像没别的了。
+
+* 碎碎念
+
+没用的。。再多的模板也缓解不了我们的牛马属性啊！

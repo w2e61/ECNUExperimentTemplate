@@ -1,0 +1,4 @@
+# key: atli
+# name: attr-latex-image
+# --
+#+ATTR_LATEX: ${1::width ${2:${3:0.7}${4:\linewidth}}} ${5::height ${6:${7:5}${8:cm}}} ${9::scale $10} ${11::options $12} $0

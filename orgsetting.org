@@ -1,0 +1,22 @@
+# orgsetting.org
+
+# 在引用文件内下下两行:
+# #+setupfile: ../orgsetting.org
+# #+call: experiment-report-settitleconfigs(reporttitle="报告名字")
+
+#+startup: allow-eval
+
+# set LaTeX class
+#+latex_class: article
+#+latex_class_options: [a3paper, twocolumn]
+
+# Document Settings
+#+latex_header: \input{../ExperimentHeaderOrg.tex}
+
+#+options: toc:nil
+
+# Packages Settings
+#+bind: org-latex-default-table-environment "tabular"
+#+bind: org-latex-with-hyperref nil
+#+bind: org-latex-title-command "\\maketitle"
+
